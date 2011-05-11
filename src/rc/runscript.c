@@ -397,15 +397,14 @@ svc_exec(const char *arg1, const char *arg2)
 			    service, arg1, arg2, (char *) NULL);
 			eerror("%s: exec `" RC_SVCDIR "/runscript.sh': %s",
 			    service, strerror(errno));
-			_exit(EXIT_FAILURE);
 		} else {
 			execl(RC_LIBEXECDIR "/sh/runscript.sh",
 			    RC_LIBEXECDIR "/sh/runscript.sh",
 			    service, arg1, arg2, (char *) NULL);
 			eerror("%s: exec `" RC_LIBEXECDIR "/sh/runscript.sh': %s",
 			    service, strerror(errno));
-			_exit(EXIT_FAILURE);
 		}
+		_exit(EXIT_FAILURE);
 	}
 
 	buffer = xmalloc(sizeof(char) * BUFSIZ);

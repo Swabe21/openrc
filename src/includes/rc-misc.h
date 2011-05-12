@@ -108,7 +108,7 @@ _unused static void *xmalloc (size_t size)
 	void *value = malloc(size);
 
 	if (value)
-		return (value);
+		return value;
 
 	ERRX;
 	/* NOTREACHED */
@@ -119,7 +119,7 @@ _unused static void *xrealloc(void *ptr, size_t size)
 	void *value = realloc(ptr, size);
 
 	if (value)
-		return (value);
+		return value;
 
 	ERRX;
 	/* NOTREACHED */
@@ -130,12 +130,12 @@ _unused static char *xstrdup(const char *str)
 	char *value;
 
 	if (! str)
-		return (NULL);
+		return NULL;
 
 	value = strdup(str);
 
 	if (value)
-		return (value);
+		return value;
 
 	ERRX;
 	/* NOTREACHED */
@@ -147,14 +147,14 @@ _unused static bool exists(const char *pathname)
 {
 	struct stat buf;
 
-	return (stat(pathname, &buf) == 0);
+	return stat(pathname, &buf) == 0;
 }
 
 _unused static bool existss(const char *pathname)
 {
 	struct stat buf;
 
-	return (stat(pathname, &buf) == 0 && buf.st_size != 0);
+	return stat(pathname, &buf) == 0 && buf.st_size != 0;
 }
 
 char *rc_conf_value(const char *var);
@@ -176,8 +176,8 @@ _unused static const char *basename_c(const char *path)
 	const char *slash = strrchr(path, '/');
 
 	if (slash)
-		return (++slash);
-	return (path);
+		return ++slash;
+	return path;
 }
 
 int parse_mode(mode_t *, char *);

@@ -395,7 +395,7 @@ rc_runlevel_stack(const char *dst, const char *src)
 		return false;
 	snprintf(s, sizeof(s), "../%s", src);
 	snprintf(d, sizeof(s), "%s/%s/%s", RC_RUNLEVELDIR, dst, src);
-	return symlink(s, d) == 0 ? true : false;
+	return symlink(s, d) == 0;
 }
 librc_hidden_def(rc_runlevel_stack)
 
@@ -405,7 +405,7 @@ rc_runlevel_unstack(const char *dst, const char *src)
 	char path[PATH_MAX];
 
 	snprintf(path, sizeof(path), "%s/%s/%s", RC_RUNLEVELDIR, dst, src);
-	return unlink(path) == 0 ? true : false;
+	return unlink(path) == 0;
 }
 librc_hidden_def(rc_runlevel_unstack)
 

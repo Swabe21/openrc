@@ -358,8 +358,7 @@ do_stop(const char *exec, const char *const *argv,
 				ebegin("Sending signal %d to PID %d",
 				    sig, pi->pid);
 			errno = 0;
-			killed = (kill(pi->pid, sig) == 0 ||
-			    errno == ESRCH ? true : false);
+			killed = kill(pi->pid, sig) == 0 || errno == ESRCH;
 			if (verbose)
 				eend(killed ? 0 : 1,
 				    "%s: failed to send signal %d to PID %d: %s",

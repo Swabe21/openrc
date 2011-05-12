@@ -252,7 +252,7 @@ want_interactive(void)
 	if (!interactive)
 		return false;
 	c = read_key(false);
-	return (c == 'I' || c == 'i') ? true : false;
+	return c == 'I' || c == 'i';
 }
 
 static void
